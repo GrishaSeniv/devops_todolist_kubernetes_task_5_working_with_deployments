@@ -17,7 +17,7 @@ kubectl apply -f .infrastructure/hpa.yml
 Check that everything is running:
 
 ```bash
-kubectl get all -n todoapp
+kubectl get all -n mateapp
 ```
 
 ## Resource Requests and Limits Explanation
@@ -44,13 +44,11 @@ Why These Values:
 ## Strategy Configuration Explanation
 
 ```yaml
-resources:
-  requests:
-    memory: "64Mi"
-    cpu: "250m"
-  limits:
-    memory: "128Mi"
-    cpu: "500m"
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 1
+    maxSurge: 1
 ```
 
 Why These Values:
@@ -94,7 +92,7 @@ You can access the application locally from your machine by forwarding a local p
 1) Run port-forward command:
 
 ```bash
-kubectl port-forward svc/todoapp-service 8081:80 -n todoapp
+kubectl port-forward svc/todoapp-service 8081:80 -n mateapp
 ```
 
 2) Test from your local terminal or browser:
