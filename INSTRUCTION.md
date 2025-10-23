@@ -92,7 +92,7 @@ You can access the application locally from your machine by forwarding a local p
 1) Run port-forward command:
 
 ```bash
-kubectl port-forward svc/todoapp-service 8081:80 -n mateapp
+kubectl port-forward svc/todoapp 8081:80 -n mateapp
 ```
 
 2) Test from your local terminal or browser:
